@@ -9,6 +9,25 @@ import sys
 
 # Complete the countingValleys function below.
 def countingValleys(n, s):
+    
+    count = 0
+    seaLevel = 0
+    
+    for i in s:
+        
+        if i == "U":
+            seaLevel = seaLevel + 1
+        elif i == "D":
+            seaLevel = seaLevel - 1
+        
+        if seaLevel == 0 and i == "U" :
+            count = count + 1
+            
+        
+        print(i , count , seaLevel)
+      
+
+    return count
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
