@@ -6,6 +6,14 @@ import sys
 
 # Complete the repeatedString function below.
 def repeatedString(s, n):
+    
+    count = 0
+    for i in range(n):
+        if s[i] == "a":
+            count +=1
+        
+    return n
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
