@@ -6,13 +6,14 @@ import sys
 
 # Complete the repeatedString function below.
 def repeatedString(s, n):
-    
-    count = 0
-    for i in range(n):
-        if s[i] == "a":
-            count +=1
-        
-    return n
+     
+    c = s.count("a") 
+    d = math.floor(n/len(s))
+    e = n % len(s)
+    f = s[0:e].count("a")
+
+    return (c * d + f)
+
 
 
 if __name__ == '__main__':
