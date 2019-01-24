@@ -21,13 +21,13 @@ process.stdin.on('end', _ => {
 function readLine() {
     return inputString[currentLine++];
 }
+
 function factorial(n) {
-
-    var sum = 0;
-
+    
+    var x = n;
     for (var i = n - 1; i >= 1; i--){
-        sum = sum + (n * i); 
+        var temp = x * i;
+        x = temp;
     }
-    n = sum;
+    n = temp;
     return n;
-}
