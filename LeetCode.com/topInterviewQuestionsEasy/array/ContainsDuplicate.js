@@ -17,7 +17,6 @@ var containsDuplicate = function(nums) {
     nums.filter((item,index) => {
         
         conditionArray.push(nums.indexOf(item) === index);
-  
     });
     
     if(conditionArray.includes(false)){
