@@ -19,7 +19,7 @@ let s = "cc";
 
 var firstUniqChar = function(s) {
   
-    // Edge cases. 
+    // Lower EDGE cases. 
     if(s.length < 1) return -1;
     if(s.length < 2) return 0;
 
