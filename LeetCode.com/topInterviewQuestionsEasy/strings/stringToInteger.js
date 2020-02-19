@@ -55,42 +55,29 @@
 
 
 
-let str = "  -4193 with words";
-let str1 = "words with -4193 ";
-let str2 = "4193 with words";
+let str1 = "   with words -4193 with words ";
+let str = "2147483647";
+let str2 = "-4193 with words";
 let str3 = "  -4193 with words";
 
 var myAtoi = function(str) {
      
     // settins up threshholds 
-    const max = Math.pow(2, 31) - 1;
-    const min = Math.pow(-2, 31)
+    const max = Math.pow(2, 31) - 1; 
+    const min = Math.pow(-2, 31);   
 
-    // Remove white spaces from ends. 
-    // str = str.trim().split("");
-
+    // Remove white spaces and letters, and make a integer if possible.
+    str = str.trim(); 
     str = parseInt(str);
-    console.log(str)
-    
-    // for (let element of str) {
-    //     console.log(typeof element);
-    //   }
-    
 
-
-
+    if(Number.isNaN(str) === true) return 0;
+    if(str > min && str < max) return str;
+    if(str >= max) return max;
+    if(str <= min) return min;
 
 };
 
 console.log(myAtoi(str));
-
-// for (let element of str) {
-//     console.log(typeof element);
-//   }
-
-
-
-
 
 
 
