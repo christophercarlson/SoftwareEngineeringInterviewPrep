@@ -34,88 +34,55 @@
  * @return {string}
  */
 
-// let n = 8;
+let n = 4;
 
 
-//  const countAndSay = function(n) {
+ const countAndSay = function(n) {
     
-//     //Base case:  
-//     if (n === 1) return '1';
+    //Base case:  
+    if (n === 1) return '1';
    
-//     //Resets solution every recursive call.
-//     let result = "";
-//     let subStr = "";
-//     let count;
-//     let cur = "";
+    //Resets solution every recursive call.
+    let result = "";
+    let subStr = "";
+    let count;
+    let cur = "";
  
-//     //Stores solution to recursive call.
-//     const previous = countAndSay(n - 1)
+    //Stores solution to recursive call.
+    const previous = countAndSay(n - 1)
     
-//     //Loop through, push template literals into empty result string.
-//     while(previous!= ""){
+    //Loop through, push template literals into empty result string.
+    // This loop setting length on over its actual size worked to check a digit against undefined, when 
+    // there was only a sinlge not reapeting digit at the end.
+    for (let x = 0, y = 1; y <= previous.length; y++) {
+         
+        if(x === previous.length -1 ){
+           //checks to see if there is only one digit left to count or check.
+           result = result.concat("1",previous[x]); 
+           break;
+        }
 
-//         for (let y = 0; y < previous.length; y++) {
-        
-//             if(previous[0] !=  previous[y] || previous.length === 1 ){
-
-//                 //Takes first set of matching integers removes them and puts them into a temporary substring. 
-//                 if(y===0)  subStr = previous.substr(0,y+1);
-//                 if(y != 0) subStr = previous.substr(0,y);
-//                 previous= previous.replace(subStr,"");
-              
-//                 //Measure length of substring, finds value of repeated number, adds them to results string. 
-//                 count = subStr.length;
-//                 cur = subStr[0];
-//                 result = result.concat(`${count}`,cur);   
-//             }
-//         }
-//     }
+       if(previous[x] !=  previous[y]){
+            
+           // Places matching integer into  into a temporary substring. 
+            subStr = previous.substring(x,y);
+           
+            //Measure length of substring, finds value of repeated number, adds them to results string. 
+            count = subStr.length;
+            cur = subStr[0];
+            result = result.concat(`${count}`,cur);  
+            
+            // Drags over x index in string, so we do not have to manipulate original string. 
+            x = y;
+        }
+    }
   
-//     return result
-// };
+    return result
+};
 
-// console.log(countAndSay(n));
-
-
+console.log(countAndSay(n));
 
 
 
-let previous = "2223341"
- 
-
- let result = "";
- let subStr = "";
- let count;
- let cur = "";
-
- //Loop through, push template literals into empty result string.
 
 
-     for (let x = 0, y = 1; y < previous.length; y++) {
-         console.log(previous.length)
-            
-         if(previous[x] !=  previous[y] || y === previous.length -1){
-            console.log(x,y)
-             // Places matching integer into  into a temporary substring. 
-             if(y === previous.length -1){
-                subStr = previous.substring(x);
-                console.log(subStr)
-             }
-             else{
-             subStr = previous.substring(x,y);
-             }
-
-            
-             //Measure length of substring, finds value of repeated number, adds them to results string. 
-             count = subStr.length;
-             cur = subStr[0];
-             result = result.concat(`${count}`,cur);  
-             
-             // Drags over x index in string, so we do not have to manipulate original string. 
-             x = y;
-         }
-     }
- 
-
-
- console.log(result)
