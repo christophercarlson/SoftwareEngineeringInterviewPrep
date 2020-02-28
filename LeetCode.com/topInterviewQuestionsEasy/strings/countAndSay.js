@@ -43,10 +43,7 @@ let n = 4;
     if (n === 1) return '1';
    
     //Resets solution every recursive call.
-    let result = "";
-    let subStr = "";
-    let count;
-    let cur = "";
+    let result = "", subStr = "", count, cur = "";
  
     //Stores solution to recursive call.
     const previous = countAndSay(n - 1)
@@ -76,10 +73,8 @@ let n = 4;
             x = y;
         }
     }
-  
     return result
 };
-
 console.log(countAndSay(n));
 
 
