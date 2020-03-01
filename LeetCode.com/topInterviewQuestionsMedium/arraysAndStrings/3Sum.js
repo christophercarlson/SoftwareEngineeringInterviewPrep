@@ -33,6 +33,9 @@ let num = [
      12,  12,  13,  14
   ]
 
+// MY solution could be much faster, a way we can improve its preformance is by
+// taking out third loop and using a dual pointer system. rather then iterating through and checking for 
+// duplicates in the solutions array. 
 
 var threeSum = function(nums) {
 
