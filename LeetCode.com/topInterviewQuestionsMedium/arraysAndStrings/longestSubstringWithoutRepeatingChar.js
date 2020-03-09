@@ -28,30 +28,31 @@
 
 "use strict";
 let log = console.log;
+let s = "abcabcbb";
 
 
 var lengthOfLongestSubstring = function(s) {
-     
 
+    let x, tempArray =[];
+    let subStringCount = new Set(); 
     
+    //base case
+    if(s.length < 2) return s.length ;
+    
+    for (x = 0; x < s.length; x++) {
+        
+        if(tempArray.includes(s[x])){
+            subStringCount.add(tempArray.length);
+            tempArray = tempArray.slice(tempArray.indexOf(s[x]) + 1);
+            tempArray.push(s[x])
+        }
+        else {
+            tempArray.push(s[x]);
+        }
+    }
+    subStringCount.add(tempArray.length);
+    return Math.max(...subStringCount);
 };
 
+log(lengthOfLongestSubstring(s))
 
-
-let s = "abcabcbb";
-let x, y, tempSubString;
-let subStringset = new Set(); 
-
-for (x = 0; x < s.length; x++) {
-    log(s[x])
-    for (y = x + 1; y < s.length; y++) {
-        
-        if(s[x]===s[y]){ 
-            log(s[x],s[y])
-            tempSubString = s.substring(x,y)
-            x = y-1;
-            break;
-        };
-    }
-    console.log(tempSubString)
-}
