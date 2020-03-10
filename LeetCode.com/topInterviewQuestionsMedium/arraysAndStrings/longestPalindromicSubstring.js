@@ -30,9 +30,40 @@
  */
 
  "use strict";
- let log = conosle.log;
+ let log = console.log;
+ let a = "jglknendplocymmvwtoxvebkekzfdhykknufqdkntnqvgfbahsljkobhbxkvyictzkqjqydczuxjkgecdyhixdttxfqmgksrkyvopwprsgoszftuhawflzjyuyrujrxluhzjvbflxgcovilthvuihzttzithnsqbdxtafxrfrblulsakrahulwthhbjcslceewxfxtavljpimaqqlcbrdgtgjryjytgxljxtravwdlnrrauxplempnbfeusgtqzjtzshwieutxdytlrrqvyemlyzolhbkzhyfyttevqnfvmpqjngcnazmaagwihxrhmcibyfkccyrqwnzlzqeuenhwlzhbxqxerfifzncimwqsfatudjihtumrtjtggzleovihifxufvwqeimbxvzlxwcsknksogsbwwdlwulnetdysvsfkonggeedtshxqkgbhoscjgpiel";
+ let s = "babad";
 
 
 var longestPalindrome = function(s) {
-    
+
+    let x,y,subStr,currMax=0,solution;
+
+    //Base cases.
+    if(s.length < 2) return s; //Minimal size.
+    if(s === s.split("").reverse().join("")) return s; //Entire string is palidrome.
+  
+    //Nested loop for iteration
+    for ( x = 0; x < s.length; x++) {
+        for ( y = x + 1; y <=s.length; y++) {
+            
+            //Initiate current substring for checking.
+            subStr = s.substring(x, y);
+            log(subStr)
+            
+            //Check 1: if substring beggining and end are equal. 
+            //Check 2: if substring is shorter than current palidrome.
+            if(subStr[0] !== subStr[subStr.length -1] || subStr.length <= currMax) continue;
+
+            //Test for palidrome.
+            if(subStr === subStr.split("").reverse().join("")){
+                currMax = subStr.length;
+                solution = subStr;
+            }
+        }
+    }
+    return solution;
 };
+
+
+log(longestPalindrome(s))
