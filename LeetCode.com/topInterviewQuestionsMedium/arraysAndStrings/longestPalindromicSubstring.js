@@ -31,39 +31,46 @@
 
  "use strict";
  let log = console.log;
- let a = "jglknendplocymmvwtoxvebkekzfdhykknufqdkntnqvgfbahsljkobhbxkvyictzkqjqydczuxjkgecdyhixdttxfqmgksrkyvopwprsgoszftuhawflzjyuyrujrxluhzjvbflxgcovilthvuihzttzithnsqbdxtafxrfrblulsakrahulwthhbjcslceewxfxtavljpimaqqlcbrdgtgjryjytgxljxtravwdlnrrauxplempnbfeusgtqzjtzshwieutxdytlrrqvyemlyzolhbkzhyfyttevqnfvmpqjngcnazmaagwihxrhmcibyfkccyrqwnzlzqeuenhwlzhbxqxerfifzncimwqsfatudjihtumrtjtggzleovihifxufvwqeimbxvzlxwcsknksogsbwwdlwulnetdysvsfkonggeedtshxqkgbhoscjgpiel";
- let s = "babad";
+ let b = "jglknendplocymmvwtoxvebkekzfdhykknufqdkntnqvgfbahsljkobhbxkvyictzkqjqydczuxjkgecdyhixdttxfqmgksrkyvopwprsgoszftuhawflzjyuyrujrxluhzjvbflxgcovilthvuihzttzithnsqbdxtafxrfrblulsakrahulwthhbjcslceewxfxtavljpimaqqlcbrdgtgjryjytgxljxtravwdlnrrauxplempnbfeusgtqzjtzshwieutxdytlrrqvyemlyzolhbkzhyfyttevqnfvmpqjngcnazmaagwihxrhmcibyfkccyrqwnzlzqeuenhwlzhbxqxerfifzncimwqsfatudjihtumrtjtggzleovihifxufvwqeimbxvzlxwcsknksogsbwwdlwulnetdysvsfkonggeedtshxqkgbhoscjgpiel";
+ let s = "cbbd";
 
 
-var longestPalindrome = function(s) {
 
-    let x,y,subStr,currMax=0,solution;
 
-    //Base cases.
+ var longestPalindrome = function(s) {
+
+    //Varibales needed.
+    let start=0,end=0,x,len1,len2,len;
+
+    //Base case:
     if(s.length < 2) return s; //Minimal size.
     if(s === s.split("").reverse().join("")) return s; //Entire string is palidrome.
-  
-    //Nested loop for iteration
-    for ( x = 0; x < s.length; x++) {
-        for ( y = x + 1; y <=s.length; y++) {
-            
-            //Initiate current substring for checking.
-            subStr = s.substring(x, y);
-            log(subStr)
-            
-            //Check 1: if substring beggining and end are equal. 
-            //Check 2: if substring is shorter than current palidrome.
-            if(subStr[0] !== subStr[subStr.length -1] || subStr.length <= currMax) continue;
 
-            //Test for palidrome.
-            if(subStr === subStr.split("").reverse().join("")){
-                currMax = subStr.length;
-                solution = subStr;
-            }
+    //Function to find palidrome.
+    let longest = (s,L,R,) =>{
+        
+        while(L >= 0 && R < s.length && s.charAt(L) === s.charAt(R)){
+            L--; R++;
         }
+        return R - L - 1;
     }
-    return solution;
+    for (x = 0; x < s.length; x++) {
+        len1 =  longest(s,x,x);
+        len2 = longest(s,x,x + 1);
+        len = Math.max(len1, len2);
+        if (len > end - start) {
+            start = Math.ceil(x - (len - 1) / 2);
+            end = x + len / 2;
+        }
+    } 
+    return s.substring(start, end + 1);
 };
 
 
 log(longestPalindrome(s))
+
+
+
+
+
+
