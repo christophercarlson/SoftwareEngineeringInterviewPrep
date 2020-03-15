@@ -29,11 +29,35 @@
 
  */
 
+let nums = [2,1,5,5,4,6];
 
 "use strict";
 let log = console.log;
 
 var increasingTriplet = function(nums) {
+      
+    //Base case:
+    if(nums.length < 3) return false;
 
-
+    let set = new Set(nums);
+    
+    //remove duplicates, check minimum length requirement. 
+    let set = new Set(nums);
+    if(set.size >= 3) return true
 };
+
+
+log(increasingTriplet(nums))
+
+
+let set = new Set(nums);
+log(set.size)
+
+
+
+for(x = 0; x < nums.length; x++){
+    
+    if(nums[x+2] === undefined) break;
+    if(nums[x] < nums[x+1] &&  nums[x+1] < nums[x+2]) return true;
+}
+return false;
