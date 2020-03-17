@@ -29,35 +29,33 @@
 
  */
 
-let nums = [2,1,5,5,4,6];
+let nums = [2,1,5,5,4,1];
 
 "use strict";
 let log = console.log;
 
-var increasingTriplet = function(nums) {
+
+
+
+// condensed version
+function increasingTriplet(nums) {
+    
+    let m, m2;
+
+    for (i = 0; i < nums.length; i++) {
       
-    //Base case:
-    if(nums.length < 3) return false;
+        //category one puts m on one index puts m2 on one index if neither of them are satified then the next placement is 
+        // larger and there is a increasing triplet.
+        if (m === undefined || nums[i] <= m){
+            m = nums[i];
+        } 
+        else if (m2 === undefined || nums[i] <= m2){
+            m2 = nums[i];
+        } 
+        //category two
+        else return true;
+    }
+    return false;
+  }
 
-    let set = new Set(nums);
-    
-    //remove duplicates, check minimum length requirement. 
-    let set = new Set(nums);
-    if(set.size >= 3) return true
-};
-
-
-log(increasingTriplet(nums))
-
-
-let set = new Set(nums);
-log(set.size)
-
-
-
-for(x = 0; x < nums.length; x++){
-    
-    if(nums[x+2] === undefined) break;
-    if(nums[x] < nums[x+1] &&  nums[x+1] < nums[x+2]) return true;
-}
-return false;
+  log(increasingTriplet(nums))
