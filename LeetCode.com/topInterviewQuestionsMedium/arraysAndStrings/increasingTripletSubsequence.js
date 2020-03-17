@@ -29,7 +29,7 @@
 
  */
 
-let nums = [2,1,5,5,4,1];
+let nums = [2,1,5,5,4,6];
 
 "use strict";
 let log = console.log;
@@ -45,7 +45,7 @@ function increasingTriplet(nums) {
     for (i = 0; i < nums.length; i++) {
       
         //category one puts m on one index puts m2 on one index if neither of them are satified then the next placement is 
-        // larger and there is a increasing triplet.
+        //larger and there is a increasing triplet.
         if (m === undefined || nums[i] <= m){
             m = nums[i];
         } 
