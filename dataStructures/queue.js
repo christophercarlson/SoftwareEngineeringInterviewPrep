@@ -40,66 +40,66 @@
  * Initialize your data structure here. Set the size of the queue to be k.
  * @param {number} k
  */
-class MyCircularQueue  {
 
-    constructor(k){
-    //initialize new que and set the head and tail to begginning.
-    this.que = new Array(k);
-    this.head = 0;
-    this.tail = 0;
+class MyCircularQueue {
+
+    constructor(k) {
+        //initialize new que and set the head and tail to beginning.
+        this.que = new Array(k);
+        this.headIndex = -1;
+        this.tailIndex = -1;
     }
-    
-};
 
-/*
- * Insert an element into the circular queue. Return true if the operation is successful. 
- * @param {number} value
- * @return {boolean}
- */
-MyCircularQueue.prototype.enQueue = function(value) {
-    if( this.length > 0){
 
-    }
-};
+    /*
+     * Insert an element into the circular queue. Return true if the operation is successful. 
+     * @param {number} value
+     * @return {boolean}
+     */
+    enQueue(value) {
 
-/*
- * Delete an element from the circular queue. Return true if the operation is successful.
- * @return {boolean}
- */
-MyCircularQueue.prototype.deQueue = function() {
-    
-};
+    };
 
-/*
- * Get the front item from the queue.
- * @return {number}
- */
-MyCircularQueue.prototype.Front = function() {
-    
-};
+    /*
+     * Delete an element from the circular queue. Return true if the operation is successful.
+     * @return {boolean}
+     */
+    deQueue() {
 
-/*
- * Get the last item from the queue.
- * @return {number}
- */
-MyCircularQueue.prototype.Rear = function() {
-    
-};
+    };
 
-/*
- * Checks whether the circular queue is empty or not.
- * @return {boolean}
- */
-MyCircularQueue.prototype.isEmpty = function() {
-    
-};
+    /*
+     * Get the front item from the queue.
+     * @return {number}
+     */
+    front() {
 
-/*
- * Checks whether the circular queue is full or not.
- * @return {boolean}
- */
-MyCircularQueue.prototype.isFull = function() {
-    
+    };
+
+    /*
+     * Get the last item from the queue.
+     * @return {number}
+     */
+    Rear() {
+
+    };
+
+    /*
+     * Checks whether the circular queue is empty or not.
+     * @return {boolean}
+     */
+    isEmpty() {
+        return this.headIndex && this.tailIndex == -1;
+    };
+
+    /*
+     * Checks whether the circular queue is full or not.
+     * @return {boolean}
+     */
+    isFull() {
+
+    };
+
 };
 
 /** 
@@ -117,6 +117,13 @@ MyCircularQueue.prototype.isFull = function() {
 
 //  TEST AREA:
 
-let k = 10;
+let log = console.table;
 
+//Test size of que
+let k = 10;
+//instantiate que of size k
 let que = new MyCircularQueue(k);
+
+//Testing functions
+log(que.isEmpty())
+
