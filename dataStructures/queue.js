@@ -18,39 +18,54 @@
 
 // 9. SEARCH You might need to search a queue to check whether an element exists within a queue. Again, this involves creating a buffer queue first to avoid modifications to the original queue.
 
-
-// Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle and the last position is connected back to the first position to make a circle. It is also called "Ring Buffer".
-
-// One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.
-
-// Your implementation should support following operations:
-
-// MyCircularQueue(k): Constructor, set the size of the queue to be k.
-// Front: Get the front item from the queue. If the queue is empty, return -1.
-// Rear: Get the last item from the queue. If the queue is empty, return -1.
-// enQueue(value): Insert an element into the circular queue. Return true if the operation is successful.
-// deQueue(): Delete an element from the circular queue. Return true if the operation is successful.
-// isEmpty(): Checks whether the circular queue is empty or not.
-// isFull(): Checks whether the circular queue is full or not.
-
-
 "use strict";
 
-/*
- * Initialize your data structure here. Set the size of the queue to be k.
- * @param {number} k
- */
 
+// Design your implementation of the CIRCULAR QUE The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle and the last position is connected back to the first position to make a circle. It is also called "Ring Buffer". One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.
 class MyCircularQueue {
 
     constructor(k) {
         //initialize new que and set the head and tail to beginning.
         this.que = new Array(k);
-        this.headIndex = -1;
-        this.tailIndex = -1;
+        this.head = -1;
+        this.tail = -1;
+        this.size = k;
     }
 
-
+    /*
+     * Get the front item from the queue.
+     * @return {number}
+     */
+    front() {
+        if (this.isEmpty()) {
+            return -1;
+        }
+        return this.que[this.head];
+    };
+    /*
+     * Get the last item from the queue.
+     * @return {number}
+     */
+    Rear() {
+        if (this.isEmpty()) {
+            return -1
+        }
+        return this.que[this.tail]
+    };
+    /*
+     * Checks whether the circular queue is empty or not.
+     * @return {boolean}
+     */
+    isEmpty() {
+        return this.head === -1;
+    };
+    /*
+     * Checks whether the circular queue is full or not.
+     * @return {boolean}
+     */
+    isFull() {
+        return ((this.tail + 1) % this.size) === this.head;
+    };
     /*
      * Insert an element into the circular queue. Return true if the operation is successful. 
      * @param {number} value
@@ -58,72 +73,60 @@ class MyCircularQueue {
      */
     enQueue(value) {
 
+        if (this.isFull()) {
+            return false;
+        }
+        if (this.isEmpty()) {
+            this.head = 0;
+        }
+        this.tail = (this.tail + 1) % this.size;
+        this.que[this.tail] = value;
+        return true;
     };
-
     /*
      * Delete an element from the circular queue. Return true if the operation is successful.
      * @return {boolean}
      */
     deQueue() {
-
+        if (this.isEmpty()) {
+            return false;
+        }
+        if (this.head == this.tail) {
+            this.head = -1;
+            this.tail = -1;
+            return true
+        }
+        this.head = (this.head + 1) % this.size;
+        return true;
     };
-
-    /*
-     * Get the front item from the queue.
-     * @return {number}
-     */
-    front() {
-
-    };
-
-    /*
-     * Get the last item from the queue.
-     * @return {number}
-     */
-    Rear() {
-
-    };
-
-    /*
-     * Checks whether the circular queue is empty or not.
-     * @return {boolean}
-     */
-    isEmpty() {
-        return this.headIndex && this.tailIndex == -1;
-    };
-
-    /*
-     * Checks whether the circular queue is full or not.
-     * @return {boolean}
-     */
-    isFull() {
-
-    };
-
 };
 
-/** 
- * Your MyCircularQueue object will be instantiated and called as such:
- * var obj = new MyCircularQueue(k)
- * var param_1 = obj.enQueue(value)
- * var param_2 = obj.deQueue()
- * var param_3 = obj.Front()
- * var param_4 = obj.Rear()
- * var param_5 = obj.isEmpty()
- * var param_6 = obj.isFull()
- */
+// Regular implementation of que.
+class Queue {
+    constructor(array) {
+        this.array = [];
+        if (array)
+            this.array = array;
+    }
+    //return entire array
+    getBuffer() {
+        return this.array.slice();
+    }
+    //checks if array has any content
+    isEmpty() {
+        return this.array.length === 0;
+    }
+    //return Head of queue
+    peek() {
+        return this.array[0];
+    }
 
+}
 
-
-//  TEST AREA:
-
+//TEST AREA:
 let log = console.table;
 
-//Test size of que
-let k = 10;
-//instantiate que of size k
-let que = new MyCircularQueue(k);
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let queue = new Queue(arr);
 
-//Testing functions
-log(que.isEmpty())
-
+log(queue.getBuffer())
