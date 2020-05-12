@@ -22,111 +22,122 @@
 
 
 // Design your implementation of the CIRCULAR QUE The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle and the last position is connected back to the first position to make a circle. It is also called "Ring Buffer". One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.
-class MyCircularQueue {
+// class MyCircularQueue {
 
-    constructor(k) {
-        //initialize new que and set the head and tail to beginning.
-        this.que = new Array(k);
-        this.head = -1;
-        this.tail = -1;
-        this.size = k;
-    }
+//     constructor(k) {
+//         //initialize new que and set the head and tail to beginning.
+//         this.que = new Array(k);
+//         this.head = -1;
+//         this.tail = -1;
+//         this.size = k;
+//     }
 
-    /*
-     * Get the front item from the queue.
-     * @return {number}
-     */
-    front() {
-        if (this.isEmpty()) {
-            return -1;
-        }
-        return this.que[this.head];
-    };
-    /*
-     * Get the last item from the queue.
-     * @return {number}
-     */
-    Rear() {
-        if (this.isEmpty()) {
-            return -1
-        }
-        return this.que[this.tail]
-    };
-    /*
-     * Checks whether the circular queue is empty or not.
-     * @return {boolean}
-     */
-    isEmpty() {
-        return this.head === -1;
-    };
-    /*
-     * Checks whether the circular queue is full or not.
-     * @return {boolean}
-     */
-    isFull() {
-        return ((this.tail + 1) % this.size) === this.head;
-    };
-    /*
-     * Insert an element into the circular queue. Return true if the operation is successful. 
-     * @param {number} value
-     * @return {boolean}
-     */
-    enQueue(value) {
+//     /*
+//      * Get the front item from the queue.
+//      * @return {number}
+//      */
+//     front() {
+//         if (this.isEmpty()) {
+//             return -1;
+//         }
+//         return this.que[this.head];
+//     };
+//     /*
+//      * Get the last item from the queue.
+//      * @return {number}
+//      */
+//     Rear() {
+//         if (this.isEmpty()) {
+//             return -1
+//         }
+//         return this.que[this.tail]
+//     };
+//     /*
+//      * Checks whether the circular queue is empty or not.
+//      * @return {boolean}
+//      */
+//     isEmpty() {
+//         return this.head === -1;
+//     };
+//     /*
+//      * Checks whether the circular queue is full or not.
+//      * @return {boolean}
+//      */
+//     isFull() {
+//         return ((this.tail + 1) % this.size) === this.head;
+//     };
+//     /*
+//      * Insert an element into the circular queue. Return true if the operation is successful. 
+//      * @param {number} value
+//      * @return {boolean}
+//      */
+//     enQueue(value) {
 
-        if (this.isFull()) {
-            return false;
-        }
-        if (this.isEmpty()) {
-            this.head = 0;
-        }
-        this.tail = (this.tail + 1) % this.size;
-        this.que[this.tail] = value;
-        return true;
-    };
-    /*
-     * Delete an element from the circular queue. Return true if the operation is successful.
-     * @return {boolean}
-     */
-    deQueue() {
-        if (this.isEmpty()) {
-            return false;
-        }
-        if (this.head == this.tail) {
-            this.head = -1;
-            this.tail = -1;
-            return true
-        }
-        this.head = (this.head + 1) % this.size;
-        return true;
-    };
-};
+//         if (this.isFull()) {
+//             return false;
+//         }
+//         if (this.isEmpty()) {
+//             this.head = 0;
+//         }
+//         this.tail = (this.tail + 1) % this.size;
+//         this.que[this.tail] = value;
+//         return true;
+//     };
+//     /*
+//      * Delete an element from the circular queue. Return true if the operation is successful.
+//      * @return {boolean}
+//      */
+//     deQueue() {
+//         if (this.isEmpty()) {
+//             return false;
+//         }
+//         if (this.head == this.tail) {
+//             this.head = -1;
+//             this.tail = -1;
+//             return true
+//         }
+//         this.head = (this.head + 1) % this.size;
+//         return true;
+//     };
+// };
 
 // Regular implementation of que.
-class Queue {
-    constructor(array) {
-        this.array = [];
-        if (array)
-            this.array = array;
-    }
-    //return entire array
-    getBuffer() {
-        return this.array.slice();
-    }
-    //checks if array has any content
-    isEmpty() {
-        return this.array.length === 0;
-    }
-    //return Head of queue
-    peek() {
-        return this.array[0];
-    }
 
-}
+// let log = console.table;
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-//TEST AREA:
-let log = console.table;
+// class Queue {
+//     constructor(array) {
+//         this.array = [];
+//         if (array)
+//             this.array = array;
+//     }
+//     getBuffer() {
+//         return this.array.slice();
+//     }
+//     isEmpty() {
+//         return this.array.length == 0;
+//     }
+//     peek() {
+//         return this.array[0];
+//     }
+//     enqueue(value) {
+//         return this.array.push(value)
+//     }
+//     dequeue() {
+//         return this.array.shift();
+//     }
+//     checkForAnElement(que, element) {
+//         let bufferArr = que.getBuffer();
+//         let bufferQueue = new Queue(bufferArr);
+//         while (!bufferQueue.isEmpty()) {
+//             if (bufferQueue.dequeue() == element) {
+//                 return true;
+//             }
+//         }
+//     }
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let queue = new Queue(arr);
+// }
 
-log(queue.getBuffer())
+// //Create new queue. 
+// var queue = new Queue(arr);
