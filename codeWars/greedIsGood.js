@@ -42,9 +42,7 @@ function score(dice) {
             i = i + 2
         }
         else temp = dice[i]
-        log(temp)
         points += calc(temp)
-        log(points)
     }
     return points
 }
