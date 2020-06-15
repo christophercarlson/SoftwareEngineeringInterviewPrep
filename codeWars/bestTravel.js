@@ -1,8 +1,8 @@
 "use strict";
 let log = console.log
-var ls = [50]
+var ls = [51, 2, 3, 4, 5]
 let t = 163
-let k = 1
+let k = 3
 
 function chooseBestSum(t, k, ls) {
 
@@ -22,7 +22,6 @@ function chooseBestSum(t, k, ls) {
         temp = []
         if (i <= n + ((r - k))) {
             pointerArr[r] = i
-
             if (r == k - 1) {
                 pointerArr.forEach(value => {
                     temp.push(ls[value])
@@ -42,6 +41,7 @@ function chooseBestSum(t, k, ls) {
                 i = pointerArr[r] + 1
         }
     }
+    log(solutionArr)
 
 
     solutionArr = solutionArr.map(time => {
