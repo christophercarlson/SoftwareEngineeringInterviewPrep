@@ -5,7 +5,7 @@ let n = 25
 
 
 // THIS WAS MY SOLUTION: it was not optimal enough, the solution below I found online it
-// uses Euler's function. Not to knowledgeable with  a lot of these mathematics equations
+// uses Euler's function. Not too knowledgeable with a lot of these mathematics equations
 // gonna have to learn some of this stuff again. 
 
 function properFractions(n) {
