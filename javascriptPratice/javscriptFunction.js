@@ -1,4 +1,4 @@
-//not all function needs names. 
+// not all function needs names. 
 // only function plus has scope to a and b. 
 
 function plus(a, b) {
@@ -7,7 +7,7 @@ function plus(a, b) {
 }
 console.log(plus(3, 3))
 
-// AN anonymous function
+// An anonymous function
 var plus2 = function (a, b) {
   return console.log(a + b)
 }(2, 7); //this will fire the function right when loaded. 
@@ -34,10 +34,13 @@ calc.plus4(3, 3) // invoking function as methods in an object
 
 //constructing an object(Making a function a objects constructor) this is no javascript
 // way of being Object oriented
+
 var dog = function () {
   var name, breed;
   return console.dir(this)
-  //The Console method dir() displays an interactive list of the properties of the specified JavaScript object. The output is presented as a hierarchical listing with disclosure triangles that let you see the contents of child objects.
+  //The Console method dir() displays an interactive list of the properties of the specified 
+  // JavaScript object. The output is presented as a hierarchical listing with disclosure triangles 
+  // that let you see the contents of child objects.
 }
 //creating a dog object based of of this function.
 firstDog = new dog;
@@ -89,7 +92,7 @@ var talk2 = function (what) {
 var saySomething2 = { normal: 'meow', love: 'purr' }
 talk.call(saySomething2, saySomething2.normal)
 talk.apply(saySomething2, ['meuff'])
-//APPLy allows us to pass an array argument
+//APPLY allows us to pass an array argument
 
 
 // THE ARGUMENT PARAMETER
