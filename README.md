@@ -1,3 +1,3 @@
 # SoftwareEngineeringInterviewPrep
-A collection of algorithms and coding challenges written in different languages to practice for technical interviews. 
+A collection of coding challenges and small projects written in different languages to practice for technical interviews. 
 
